@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>😈 Got Pranked</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle, #000, #111);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Arial Black', sans-serif;
+    overflow: hidden;
+}
+
+#text {
+    font-size: 90px;
+    color: red;
+    animation: glitch 0.3s infinite;
+}
+
+#emoji {
+    font-size: 130px;
+    margin-top: 20px;
+    animation: shake 0.4s infinite;
+}
+
+#hint {
+    margin-top: 30px;
+    color: gray;
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-4px, 2px); }
+    40% { transform: translate(4px, -2px); }
+    60% { transform: translate(-2px, 4px); }
+    80% { transform: translate(2px, -4px); }
+    100% { transform: translate(0); }
+}
+
+@keyframes shake {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-8deg); }
+    50% { transform: rotate(8deg); }
+    75% { transform: rotate(-8deg); }
+    100% { transform: rotate(0deg); }
+}
+</style>
+</head>
+
+<body>
+
+<div id="text">FUCK</div>
+<div id="emoji">🖕</div>
+<div id="hint">click anywhere 😈</div>
+
+<script>
+const texts = ["FUCK", "YOU GOT PRANKED", "LOL 😂", "SORRY 😜", "HAHAHA"];
+let index = 0;
+
+// Random background flash
+setInterval(() => {
+    document.body.style.background =
+        `radial-gradient(circle, black, rgb(${rand()},${rand()},${rand()}))`;
+}, 500);
+
+// Text change on click
+document.body.addEventListener("click", () => {
+    index = (index + 1) % texts.length;
+    document.getElementById("text").innerText = texts[index];
+});
+
+// Helper function
+function rand() {
+    return Math.floor(Math.random() * 255);
+}
+</script>
+
+</body>
+</html>
